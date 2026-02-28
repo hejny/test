@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testovací stránka – hejny/test</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.5; }
+    header { margin-bottom: 1.5rem; }
+    code, pre { background: #f6f8fa; padding: .15rem .35rem; border-radius: 6px; }
+    pre { padding: 1rem; overflow: auto; }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; margin: 1rem 0; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #e5e7eb; padding: .5rem .6rem; text-align: left; }
+    th { background: #f9fafb; }
+    .muted { color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Index.html – testovací data</h1>
+    <p class="muted">Repo: <strong>hejny/test</strong> • Účel: rychlé ověření, že se soubor správně nahrál a dá se otevřít v prohlížeči.</p>
+  </header>
+
+  <section class="card">
+    <h2>Testovací text</h2>
+    <p>Ahoj! Tohle je jednoduchá stránka s pár daty pro testování „scanu“/kontroly repozitáře.</p>
+    <ul>
+      <li>Čeština: žluťoučký kůň úpěl ďábelské ódy</li>
+      <li>Čísla: 1234567890</li>
+      <li>Datum: <span id="today"></span></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Tabulka s testovacími daty</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Jméno</th>
+          <th>Role</th>
+          <th>Stav</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Anna Nováková</td><td>Tester</td><td>OK</td></tr>
+        <tr><td>2</td><td>Petr Svoboda</td><td>Dev</td><td>Pending</td></tr>
+        <tr><td>3</td><td>Eva Dvořáková</td><td>PM</td><td>Blocked</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Testovací JSON</h2>
+    <pre><code>{
+  "project": "hejny/test",
+  "purpose": "test data for repository scanning",
+  "items": [
+    {"id": 1, "name": "alpha", "enabled": true},
+    {"id": 2, "name": "beta", "enabled": false}
+  ]
+}</code></pre>
+  </section>
+
+  <script>
+    const d = new Date();
+    document.getElementById('today').textContent = d.toLocaleString('cs-CZ');
+  </script>
+</body>
+</html>
