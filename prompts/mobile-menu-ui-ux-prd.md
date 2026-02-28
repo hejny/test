@@ -1,152 +1,152 @@
-# PRD: Vylepšení UI/UX mobilního menu
+# PRD: Improve Mobile Menu UI/UX
 
-- **Produkt/Repo:** `hejny/test`
-- **Dokument:** PRD
-- **Autor:** AI (Typescript fullstack dev + PO)
-- **Datum:** 2026-02-28
-- **Stav:** Draft (čeká na doplnění kontextu)
+- **Product/Repo:** `hejny/test`
+- **Document type:** Product Requirements Document (PRD)
+- **Author:** AI (TypeScript full‑stack dev + Product Owner)
+- **Date:** 2026-02-28
+- **Status:** Draft (needs product context)
 
-## 1) Shrnutí
-Cílem je zlepšit použitelnost a dohledatelnost navigace na mobilu (menu), snížit tření při přechodu na klíčové stránky a zlepšit metriky navigačních interakcí.
+## 1) Summary
+The goal is to improve the usability and discoverability of mobile navigation (menu), reduce friction to reach key pages, and improve navigation interaction metrics.
 
-Tento PRD definuje cíle, rozsah, UX návrhy a akceptační kritéria pro vylepšení mobilního menu. Repo aktuálně obsahuje jednoduchý web (`index.html`), takže návrh je obecný a aplikovatelný pro responzivní web/PWA.
+This PRD defines goals, scope, UX/UI options, analytics tracking, and acceptance criteria for improving the mobile menu. The repository currently contains a simple website (`index.html`), so the proposal is intentionally generic and applicable to responsive web/PWA.
 
-## 2) Kontext a problém
-### Pozorované/typické problémy (hypotézy k ověření)
-Protože nebyly dodány konkrétní pain pointy, vycházíme z nejčastějších problémů mobilních menu:
-- Uživatelé nenachází hlavní akce (příliš hluboko v menu / špatná hierarchie).
-- Menu je dlouhé, bez skupin a vizuálních oddělovačů.
-- Malé tap targety a nízký kontrast.
-- Menu se zavírá „nečekaně“ (scroll, tap mimo) a uživatel ztrácí kontext.
-- Chybí stav aktivní stránky a jasné breadcrumb/kontext.
+## 2) Context & Problem
+### Observed / typical issues (hypotheses to validate)
+Because no concrete pain points were provided yet, this PRD starts from common mobile menu problems:
+- Users cannot find primary actions (too deep in the menu / unclear hierarchy).
+- The menu is long, without grouping and visual separators.
+- Tap targets are too small and/or contrast is insufficient.
+- The menu closes “unexpectedly” (scroll, outside tap) and users lose context.
+- Missing “active page” state and unclear navigation context.
 
-### Proč teď
-- Mobilní traffic typicky tvoří většinu návštěvnosti.
-- Navigace je klíčová pro aktivaci (přechod na core flows).
+### Why now
+- Mobile traffic is typically the majority of sessions.
+- Navigation is a key driver to core flows and activation.
 
-## 3) Cíle a non-cíle
-### Cíle
-1. Zrychlit cestu uživatele ke klíčovým sekcím (méně tapů, lepší IA).
-2. Zvýšit míru využití navigace a snížit bounce po otevření menu.
-3. Zajistit přístupnost a ovladatelnost (WCAG 2.2 AA, a11y best practices).
+## 3) Goals & Non-goals
+### Goals
+1. Reduce time and taps needed to reach key sections (better IA, fewer steps).
+2. Increase navigation usage and reduce drop-off after opening the menu.
+3. Ensure accessibility and operability (WCAG 2.2 AA, a11y best practices).
 
-### Non-cíle
-- Kompletní redesign vizuální identity.
-- Změny informační architektury celého webu (mimo menu) bez schválení.
+### Non-goals
+- Full visual identity redesign.
+- Re-architecting the whole site information architecture beyond the menu (unless explicitly approved).
 
-## 4) Uživatelské scénáře (JTBD)
-- **Jako návštěvník** chci rychle najít hlavní sekce, abych dokončil svůj úkol bez hledání.
-- **Jako vracející se uživatel** chci mít po ruce poslední/časté položky.
-- **Jako uživatel s omezením** (motorika/čtečka) chci menu pohodlně ovládat.
+## 4) User Scenarios (JTBD)
+- **As a visitor**, I want to quickly find the main sections so I can complete my task without searching.
+- **As a returning user**, I want quick access to frequent or recent destinations.
+- **As a user with accessibility needs** (motor/assistive tech), I want to operate the menu comfortably.
 
-## 5) Návrh řešení (UX/UI)
-> Finální variantu vybereme podle typu menu (hamburger drawer vs bottom nav) a obsahu.
+## 5) Proposed Solution (UX/UI)
+> The final choice depends on your content and menu type (hamburger drawer vs bottom navigation).
 
-### Varianta A: Hamburger (drawer) + zvýrazněné primární akce
-- Ikona hamburgeru v headeru + jasný label (volitelně) „Menu“.
-- Drawer přes 80–90% šířky, s pozadím (scrim).
-- **Sekce:**
-  - Primární položky (Top 4–6)
-  - Sekundární (Nastavení, Nápověda, Kontakt)
-  - Účet (Přihlášení/Profil/Odhlásit)
-- Aktivní položka zvýrazněná.
-- Přidat vyhledávání v menu, pokud položek > ~8–10.
+### Option A: Hamburger (drawer) + highlighted primary actions
+- Hamburger icon in the header (+ optional label “Menu”).
+- Drawer covering ~80–90% width with a background scrim.
+- **Sections:**
+  - Primary items (Top 4–6)
+  - Secondary (Settings, Help, Contact)
+  - Account (Sign in/Profile/Sign out)
+- Active item clearly highlighted.
+- Add in-menu search if items > ~8–10.
 
-### Varianta B: Bottom navigation pro top úkoly + „More“ drawer
-- 3–5 tabů pro nejčastější cíle.
-- Poslední tab „Více“ otevírá drawer se zbytkem.
-- Výhoda: rychlý přístup palcem, menší potřeba otevírat menu.
+### Option B: Bottom navigation for top tasks + “More” drawer
+- 3–5 tabs for the most frequent destinations.
+- Last tab “More” opens a drawer with the remaining items.
+- Benefit: thumb-friendly, less need to open the menu.
 
-### Doporučení (heuristika)
-- Pokud máte **≤5 klíčových destinací**, preferovat bottom nav.
-- Pokud máte **hodně sekcí / hierarchii**, preferovat drawer + vyhledávání/skupiny.
+### Heuristic recommendation
+- If you have **≤5 key destinations**, prefer bottom navigation.
+- If you have **many sections and hierarchy**, prefer a drawer + grouping/search.
 
-## 6) Informační architektura (IA)
-### Minimální struktura (template)
-1. **Domů**
-2. **Hlavní sekce A**
-3. **Hlavní sekce B**
-4. **Hlavní akce (CTA)**
-5. **Kontakt / Podpora**
+## 6) Information Architecture (IA)
+### Minimal structure (template)
+1. **Home**
+2. **Primary section A**
+3. **Primary section B**
+4. **Primary CTA**
+5. **Contact / Support**
 
-Sekundární:
-- Nastavení
-- O aplikaci
-- Podmínky / GDPR
+Secondary:
+- Settings
+- About
+- Terms / Privacy
 
-> Tady doplníme vaše reálné položky (Top 5) a případné role (guest vs logged-in).
+> Replace this with your real menu items (Top 5) and role-specific variants (guest vs logged-in).
 
-## 7) Interakční detaily
-- Otevření menu tapem na ikonu.
-- Zavření menu:
-  - tap na scrim,
-  - tlačítko „Zavřít“ (pro a11y),
-  - klávesa ESC (na webech s klávesnicí).
-- Zachovat scroll pozici stránky při otevřeném menu.
+## 7) Interaction Details
+- Open via tapping the menu trigger.
+- Close via:
+  - tapping the scrim,
+  - a dedicated “Close” button (for a11y),
+  - ESC key (for keyboard users).
+- Preserve page scroll position while the drawer is open.
 - Focus management:
-  - focus trap uvnitř draweru,
-  - po zavření vrátit focus na trigger.
+  - focus trap inside the drawer,
+  - return focus to the trigger when closing.
 
-## 8) Přístupnost (WCAG)
-- Tap target min. **44×44 px**.
-- Kontrast textu min. **4.5:1** (AA).
-- `aria-expanded`, `aria-controls` na triggeru.
-- Drawer jako `role="dialog"` / `nav` dle implementace.
-- Focus visible (outline) pro klávesnici.
-- Podpora čteček: správné popisky ikon.
+## 8) Accessibility (WCAG)
+- Minimum tap target size: **44×44 px**.
+- Text contrast at least **4.5:1** (AA).
+- `aria-expanded`, `aria-controls` on the trigger.
+- Drawer implemented as `role="dialog"` or `nav` (depending on approach).
+- Visible focus outline for keyboard navigation.
+- Screen reader support: meaningful labels for icons.
 
-## 9) Telemetrie / analytika (event plan)
-> Názvy eventů jsou návrh; upravíme podle GA4/Mixpanel konvencí.
+## 9) Telemetry / Analytics (Event plan)
+> Event naming is a proposal; adapt to GA4/Mixpanel/Amplitude conventions.
 
-### Eventy
+### Events
 1. `menu_open`
    - props: `source` (hamburger/bottom_more), `page`, `viewport`
 2. `menu_close`
    - props: `method` (scrim/close_btn/escape/navigate)
 3. `menu_item_click`
    - props: `item_id`, `item_label`, `item_level`, `from_page`
-4. `bottom_nav_click` (pokud bottom nav)
+4. `bottom_nav_click` (if bottom nav)
    - props: `tab_id`, `from_page`
 
-### KPI (návrh)
-- CTR na top položky menu.
-- % sessions s otevřeným menu.
-- Drop-off po `menu_open` (uživatel zavře bez navigace).
-- Čas do první navigace po `menu_open`.
+### KPIs (proposal)
+- CTR on top menu items.
+- % sessions with menu opened.
+- Drop-off after `menu_open` (close without navigating).
+- Time to first navigation after `menu_open`.
 
-## 10) Akceptační kritéria
-### Funkční
-- [ ] Menu je dostupné a funkční na mobilních breakpointech (např. ≤ 768px).
-- [ ] Uživatel může menu otevřít i zavřít minimálně 3 způsoby (scrim, close, ESC).
-- [ ] Klik na položku naviguje a menu se zavře.
-- [ ] Aktivní stránka je vizuálně označena.
+## 10) Acceptance Criteria
+### Functional
+- [ ] Menu is available and works on mobile breakpoints (e.g., ≤ 768px).
+- [ ] Users can open and close the menu via at least 3 methods (scrim, close button, ESC).
+- [ ] Clicking a menu item navigates and closes the menu.
+- [ ] The active page is visually indicated.
 
 ### UX
-- [ ] Primární položky jsou viditelné bez scrollu na běžných mobilech (výška ~700–800px) – nebo je jasně naznačen scroll.
-- [ ] Tap targety splňují 44×44px.
+- [ ] Primary items are visible without scrolling on common mobile heights (~700–800px), or scrolling is clearly indicated.
+- [ ] Tap targets meet 44×44px.
 
-### A11y
-- [ ] Trigger má `aria-expanded` a `aria-controls`.
-- [ ] Drawer má focus trap a po zavření vrací focus.
-- [ ] Kontrast textu splňuje AA.
+### Accessibility
+- [ ] Trigger includes `aria-expanded` and `aria-controls`.
+- [ ] Drawer has focus trap and returns focus on close.
+- [ ] Text contrast meets WCAG AA.
 
-### Analytika
-- [ ] Odesílají se eventy `menu_open`, `menu_close`, `menu_item_click` s definovanými properties.
+### Analytics
+- [ ] Events `menu_open`, `menu_close`, `menu_item_click` are emitted with defined properties.
 
-## 11) Edge cases
-- Dlouhé názvy položek (zalomení / ellipsis).
-- Velké množství položek (sekce + sticky header ve draweru).
-- Stav přihlášen/odhlášen.
+## 11) Edge Cases
+- Long item labels (wrapping / ellipsis).
+- Large number of items (grouping + sticky header within drawer).
+- Logged-in vs logged-out states.
 
-## 12) Otevřené otázky (nutné doplnit)
-Prosím odpověz, a PRD aktualizuji z „template“ na konkrétní:
-1. Je to **web / PWA / nativní appka**?
-2. Typ menu: **hamburger drawer**, **bottom navigation**, nebo kombinace?
-3. Jaké jsou konkrétní problémy dnes (3–5 bodů)?
-4. Jakých je **Top 5 položek menu** + sekundární odkazy?
-5. Jaký používáte design system (MUI/Tailwind/vlastní) a analytics (GA4/Amplitude/Mixpanel)?
+## 12) Open Questions (required to finalize)
+Please answer so we can turn this template into a concrete PRD:
+1. Is this **web / PWA / native app**?
+2. Menu type: **hamburger drawer**, **bottom navigation**, or a combination?
+3. What are the current concrete problems (3–5 bullets)?
+4. What are your **Top 5 menu items** + secondary links (help/settings/logout, etc.)?
+5. Which design system (MUI/Tailwind/custom) and analytics (GA4/Amplitude/Mixpanel) do you use?
 
-## 13) Návrh rollout plánu
-- Fáze 1: Implementace + a11y + základní eventy.
-- Fáze 2: A/B test (Varianta A vs B) dle trafficu.
-- Fáze 3: Iterace podle dat (zkrácení menu, re-order, sticky CTA).
+## 13) Rollout Plan (proposal)
+- Phase 1: Implementation + a11y + baseline events.
+- Phase 2: A/B test (Option A vs B) depending on traffic.
+- Phase 3: Iterate based on data (shorten menu, reorder, sticky CTA).
