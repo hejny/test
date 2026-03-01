@@ -2,27 +2,26 @@
 
 - **Product/Repo:** `hejny/test`
 - **Dokument:** Product Requirements Document (PRD)
-- **Autor:** AI (TypeScript full‑stack dev + Product Owner)
 - **Datum:** 2026-03-01
 - **Status:** Draft
 
 ## 1) Shrnutí
 Cílem je zlepšit použitelnost mobilní navigace (hamburger menu) na responsive webu: rychlejší dohledání klíčových sekcí, méně omylů při ovládání, lepší přístupnost a měřitelné zlepšení v navigačních metrikách.
 
-Dodávkou je mobilní „drawer“ (boční panel) s jasnou hierarchií položek, správným chováním při otevření/zavření, a11y implementací a základním měřením.
+Dodávkou je mobilní „drawer“ (boční panel) s jasnou hierarchií položek, konzistentním chováním při otevření/zavření, a11y implementací a základním měřením.
 
 ## 2) Kontext a problém
-### Předpokládané problémy (typické)
-Bez konkrétního popisu současného stavu vycházíme z častých UX problémů hamburger menu:
+### Předpokládané UX problémy (typické)
+Pokud nemáme popsaný současný stav, vycházíme z častých problémů hamburger menu:
 - Položky jsou nejasně seskupené a uživatelé nevidí prioritu.
-- Menu se špatně ovládá jednou rukou (tap targety malé, těsné rozestupy).
-- Chybí indikace aktivní stránky a uživatel ztrácí kontext.
-- Zavírání menu je nekonzistentní (tap mimo / scroll / „back“ na Androidu).
-- Menu není dobře přístupné pro klávesnici a screen readery.
+- Malé tap targety / těsné rozestupy → mis-tapy.
+- Chybí indikace aktivní stránky → ztráta kontextu.
+- Nekonzistentní zavírání (tap mimo / scroll / „back“ na Androidu).
+- Nedostatečná přístupnost pro klávesnici a screen readery.
 
 ### Proč teď
 - Mobilní návštěvnost bývá majoritní.
-- Navigace ovlivňuje dosažení hlavních konverzních kroků.
+- Navigace přímo ovlivňuje dosažení hlavních konverzních kroků.
 
 ## 3) Cíle a necíle
 ### Cíle
@@ -37,7 +36,7 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
 ## 4) Uživatelé a scénáře (JTBD)
 - **Nový návštěvník:** potřebuje rychle pochopit „co tady najdu“ a kam kliknout.
 - **Returning user:** chce se dostat na často používané sekce co nejrychleji.
-- **Uživatel se znevýhodněním (motorika/assistive tech):** potřebuje velké cíle, čitelnost, ovladatelnost.
+- **Uživatel se asistivními technologiemi / znevýhodněním:** potřebuje velké cíle, čitelnost, ovladatelnost.
 
 ## 5) Návrh řešení (UX/UI)
 ### 5.1 Komponenty
@@ -47,11 +46,11 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
 - **Drawer (boční panel)**
   - Šířka: ~80–90 % viewportu (mobil).
   - Pozadí: **scrim** (poloprůhledný overlay) pro jasný fokus.
-  - Uvnitř: hlavička (logo/název), volitelně uživatelská sekce (přihlášení/profil).
+  - Uvnitř: hlavička (logo/název), volitelně uživatelská sekce.
 - **Položky menu**
   - Primární (top 4–6) nahoře.
   - Sekundární níže (O nás, Kontakt, Podpora, Nastavení, atd.).
-  - Volitelně „sticky“ primární CTA (např. „Začít“, „Objednat“), pokud to dává smysl.
+  - Volitelně „sticky“ primární CTA (např. „Začít“, „Objednat“).
 
 ### 5.2 Hierarchie a obsah (šablona)
 - Sekce **Primární**: Home, Produkt, Ceník, Reference, Kontakt
@@ -68,12 +67,12 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
   - klávesa ESC,
   - po kliknutí na položku (navigace).
 - **Scroll management:** při otevřeném menu se ne-scrolluje background (body lock).
-- **Back button (Android / browser):** doporučení: pokud je menu otevřené, „back“ nejdřív zavře menu (bez navigace zpět). (Upřesnit dle technického řešení.)
+- **Back button (Android / browser):** pokud je menu otevřené, „back“ nejdřív zavře menu (bez navigace zpět).
 - **Aktivní položka:** vizuálně zvýraznit aktuální stránku.
 
 ### 5.4 Responsivita
-- Menu se aktivuje pro breakpoints např. `<= 768px` (upřesnit podle designu).
-- V landscape režimu zajistit rozumnou výšku a scroll v seznamu.
+- Menu se aktivuje pro breakpoint např. `<= 768px` (upřesnit podle designu).
+- V landscape zajistit rozumnou výšku a interní scroll seznamu.
 
 ## 6) Přístupnost (WCAG 2.2 AA)
 ### Požadavky
@@ -90,8 +89,6 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
   - viditelný focus outline.
 
 ## 7) Telemetrie / analytika (event plan)
-> Přizpůsobte naming GA4/Mixpanel/Amplitude.
-
 ### Eventy
 1. `menu_open`
    - props: `page`, `viewport_w`, `viewport_h`, `source` (hamburger)
@@ -110,7 +107,7 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
 ### Funkční
 - [ ] Na mobilních breakpointech je dostupný hamburger trigger v hlavičce.
 - [ ] Menu se otevře jako drawer a zablokuje scroll pozadí.
-- [ ] Menu lze zavřít scrimem, tlačítkem Zavřít a klávesou ESC.
+- [ ] Menu lze zavřít scrimem, tlačítkem Zavřít, klávesou ESC a back tlačítkem (když je otevřené).
 - [ ] Klik na položku provede navigaci a zavře menu.
 - [ ] Aktivní stránka je v menu zvýrazněna.
 
@@ -132,7 +129,7 @@ Bez konkrétního popisu současného stavu vycházíme z častých UX problém�
 - Stav přihlášen/nepřihlášen.
 - iOS Safari: scroll/overflow chování.
 
-## 10) Otevřené otázky (potřebné k finalizaci)
+## 10) Otevřené otázky (k finalizaci)
 1. Jaké jsou **aktuální problémy** (3–5 konkrétních bodů) na vašem webu?
 2. Jaký je **finální seznam položek** (primární/sekundární) a jejich priorita?
 3. Má menu obsahovat účetní sekci (login/profil) a jaké stavy?
